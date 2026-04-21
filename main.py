@@ -408,12 +408,18 @@ async def main(page: ft.Page):
 ft.app(target=main, view=ft.AppView.WEB_BROWSER, assets_dir="assets")
 
 import os
+import flet as ft
 
-port = int(os.environ.get("PORT", 8000))
+async def main(page: ft.Page):
+    app = PortafolioHacker(page)
+    await app.animar_inicio()
 
-ft.app(
-    target=main,
-    view=ft.AppView.WEB_BROWSER,
-    assets_dir="assets",
-    port=port
-)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+
+    ft.run(
+        target=main,
+        port=port,
+        view=ft.WEB_BROWSER,
+        assets_dir="assets"
+    )
